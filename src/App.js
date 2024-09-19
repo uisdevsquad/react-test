@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Debugmate from "debugmate"; // Caminho para o arquivo debugmate.js
+
+const debugmate = new Debugmate();
 
 function App() {
+  // const handleClick = () => {
+  //   fetch('https://jsonplaceholder.typicode.com/todosdawd/1')
+  //   .catch(error => debugmate.publish(error));
+  // };
+
+  function generateError() {
+    throw new Error('Erro de teste');
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>React Application</h1>
+      {/* <ComponentNotExistsForTesting/> */}
+      <button onClick={() => notExistsFunction()}>Click me</button>
+
     </div>
   );
 }
