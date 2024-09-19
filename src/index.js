@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './components/ErrorBoundary';
 import GlobalErrorHandler from './components/GlobalErrorHandler';
-import Debugmate from 'debugmate';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

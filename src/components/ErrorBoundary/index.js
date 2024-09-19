@@ -1,8 +1,7 @@
-// ErrorBoundary.js
 import React from 'react';
-import Debugmate from "debugmate"; // Caminho para o arquivo debugmate.js
+import Debugmate from "debugmate";
 
-const debugmate = new Debugmate();// O módulo que você criou para enviar erros
+const debugmate = new Debugmate();
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -18,20 +17,6 @@ class ErrorBoundary extends React.Component {
     componentDidCatch(error, errorInfo) {
         // Envie o erro para o servidor
         debugmate.publish(error, errorInfo);
-    }
-
-    componentDidMount() {
-        window.onerror = function (message, source, lineno, colno, error) {
-            console.error('Global error captured:', { message, source, lineno, colno, error });
-
-            // Enviar para a API
-        };
-
-        window.addEventListener('unhandledrejection', (event) => {
-            console.error('Unhandled Promise Rejection:', event.reason);
-
-            // Enviar para a API
-        });
     }
 
     render() {
