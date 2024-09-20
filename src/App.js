@@ -1,23 +1,30 @@
 import Debugmate from "debugmate"; // Caminho para o arquivo debugmate.js
-
+import TriggerEventError from "./components/TriggerEventError";
+import TriggerNetworkError from "./components/TriggerNetworkError";
+import TriggerPromiseRejection from "./components/TriggerPromiseRejection";
+import TriggerReferenceError from "./components/TriggerReferenceError";
+import TriggerSyntaxError from "./components/TriggerSyntaxError";
+import TriggerTypeError from "./components/TriggerTypeError";
 const debugmate = new Debugmate();
 
 function App() {
-  // const handleClick = () => {
-  //   fetch('https://jsonplaceholder.typicode.com/todosdawd/1')
-  //   .catch(error => debugmate.publish(error));
-  // };
 
   function generateError() {
     throw new Error('Erro de teste');
-}
+  }
 
   return (
     <div>
       <h1>React Application</h1>
-      {/* <ComponentNotExistsForTesting/> */}
-      <button onClick={() => notExistsFunction()}>Click me</button>
-
+      <button onClick={generateError}>Click me</button>
+      <br />
+      <br />
+      <TriggerEventError />
+      <TriggerNetworkError />
+      <TriggerPromiseRejection />
+      <TriggerReferenceError />
+      <TriggerSyntaxError />
+      <TriggerTypeError />
     </div>
   );
 }
