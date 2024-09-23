@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 
 function TriggerEventError(){
+
+    console.log(process.env.REACT_APP_DEBUGMATE_CONTEXT);
+
     useEffect(() => {
         document.getElementById('nonexistent').addEventListener('click', () => {
-            // Isto irá gerar um erro ao tentar adicionar um listener a um elemento inexistente
             throw new Error('Event Error');
         });
     }, []);

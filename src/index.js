@@ -1,19 +1,88 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './components/ErrorBoundary';
 import GlobalErrorHandler from './components/GlobalErrorHandler';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import TriggerEventError from './components/TriggerEventError';
+import TriggerNetworkError from './components/TriggerNetworkError';
+import TriggerPromiseRejection from './components/TriggerPromiseRejection';
+import TriggerReferenceError from './components/TriggerReferenceError';
+import TriggerSyntaxError from './components/TriggerSyntaxError';
+import TriggerTypeError from './components/TriggerTypeError';
+import App from './App';
+import RangeError from './components/RangeError';
+import StateMutationError from './components/StateMutationError';
+import AsyncError from './components/AsyncError';
+import ClickEventError from './components/ClickEventError';
+import LifecycleError from './components/LifecycleError';
+import UnhandledRejectionError from './components/UnhandledRejectionError';
+
+const router = createBrowserRouter([
+  {
+    path: "/event-error",
+    element: <TriggerEventError />,
+  },
+  {
+    path: "/network-error",
+    element: <TriggerNetworkError />,
+  },
+  {
+    path: "/promise-rejection",
+    element: <TriggerPromiseRejection />,
+  },
+  {
+    path: "/reference-error",
+    // descomentar funcao dentro do componente
+    element: <TriggerReferenceError />,
+  },
+  {
+    path: "/syntax-error",
+    element: <TriggerSyntaxError />,
+  },
+  {
+    path: "/type-error",
+    element: <TriggerTypeError />,
+  },
+  {
+    path: "/state-mutation nao funcionou",
+    element: <StateMutationError />,
+  },
+  {
+    path: "async-error",
+    element: <AsyncError />,
+  },
+  {
+    path: "click-event-error",
+    element: <ClickEventError />,
+  },
+  {
+    path: "/life-cycle-error",
+    element: <LifecycleError />,
+  },
+  {
+    path: "range-error",
+    element: <RangeError />,
+  },
+  {
+    path: "unhandled-rejection-error",
+    element: <UnhandledRejectionError />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <GlobalErrorHandler >
-        <App />
-      </GlobalErrorHandler>
-    </ErrorBoundary>
+    {/* <ErrorBoundary> */}
+    <GlobalErrorHandler >
+      <RouterProvider router={router} />
+      {/* <App/> */}
+    </GlobalErrorHandler>
+    {/* </ErrorBoundary> */}
   </React.StrictMode>
 );
 

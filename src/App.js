@@ -1,11 +1,9 @@
-import Debugmate from "debugmate"; // Caminho para o arquivo debugmate.js
 import TriggerEventError from "./components/TriggerEventError";
 import TriggerNetworkError from "./components/TriggerNetworkError";
 import TriggerPromiseRejection from "./components/TriggerPromiseRejection";
 import TriggerReferenceError from "./components/TriggerReferenceError";
 import TriggerSyntaxError from "./components/TriggerSyntaxError";
 import TriggerTypeError from "./components/TriggerTypeError";
-const debugmate = new Debugmate();
 
 function App() {
 
@@ -19,12 +17,12 @@ function App() {
       <button onClick={generateError}>Click me</button>
       <br />
       <br />
-      <TriggerEventError />
-      <TriggerNetworkError />
-      <TriggerPromiseRejection />
+      {/* <TriggerEventError /> */}
+      {/* <TriggerNetworkError /> */}
+      {/* <TriggerPromiseRejection /> */}
       <TriggerReferenceError />
-      <TriggerSyntaxError />
-      <TriggerTypeError />
+      {/* <TriggerSyntaxError /> */}
+      {/* <TriggerTypeError /> */}
     </div>
   );
 }
