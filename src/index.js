@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ErrorBoundary from './components/ErrorBoundary';
-import GlobalErrorHandler from './components/GlobalErrorHandler';
+import DebugmateGlobalErrorHandler from './components/DebugmateGlobalErrorHandler';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,8 +20,23 @@ import AsyncError from './components/AsyncError';
 import ClickEventError from './components/ClickEventError';
 import LifecycleError from './components/LifecycleError';
 import UnhandledRejectionError from './components/UnhandledRejectionError';
+import GenerateDivisionByZeroError from './components/GenerateDivisionByZeroError';
+import GenerateUriError from './components/GenerateUriError';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/uri-error",
+    element: <GenerateUriError />,
+  },
+  {
+    path: "/division-by-zero",
+    element: <GenerateDivisionByZeroError />,
+  },
   {
     path: "/event-error",
     element: <TriggerEventError />,
@@ -37,7 +51,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/reference-error",
-    // descomentar funcao dentro do componente
     element: <TriggerReferenceError />,
   },
   {
@@ -49,7 +62,7 @@ const router = createBrowserRouter([
     element: <TriggerTypeError />,
   },
   {
-    path: "/state-mutation nao funcionou",
+    path: "/state-mutation-error",
     element: <StateMutationError />,
   },
   {
@@ -77,12 +90,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <ErrorBoundary> */}
-    <GlobalErrorHandler >
-      <RouterProvider router={router} />
-      {/* <App/> */}
-    </GlobalErrorHandler>
-    {/* </ErrorBoundary> */}
+    <ErrorBoundary>
+      <DebugmateGlobalErrorHandler >
+        <RouterProvider router={router} />
+      </DebugmateGlobalErrorHandler>
+    </ErrorBoundary>  
   </React.StrictMode>
 );
 
