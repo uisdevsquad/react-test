@@ -1,16 +1,17 @@
-import Debugmate from 'debugmate';
+import { useDebugmate } from '../../providers/DebugmateProvider';
+import { environment, user } from '../../utils/debugmateContext';
 
-const debugmate = new Debugmate();
 
 function GenerateDivisionByZeroError() {
+    const debugmate = useDebugmate();
+
     try {
-        // Divisão por zero
         const result = 1 / 0;
         if (!isFinite(result)) {
             throw new Error('Division by zero');
         }
     } catch (error) {
-       debugmate.publish(error);
+       debugmate.publish(error, user, environment);
     }
 }
 

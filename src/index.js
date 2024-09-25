@@ -22,7 +22,7 @@ import LifecycleError from './components/LifecycleError';
 import UnhandledRejectionError from './components/UnhandledRejectionError';
 import GenerateDivisionByZeroError from './components/GenerateDivisionByZeroError';
 import GenerateUriError from './components/GenerateUriError';
-import ErrorBoundary from './components/ErrorBoundary';
+import DebugmateProvider from './providers/DebugmateProvider';
 
 const router = createBrowserRouter([
   {
@@ -90,11 +90,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <DebugmateGlobalErrorHandler >
+      <DebugmateProvider >
         <RouterProvider router={router} />
-      </DebugmateGlobalErrorHandler>
-    </ErrorBoundary>  
+      </DebugmateProvider>
   </React.StrictMode>
 );
 

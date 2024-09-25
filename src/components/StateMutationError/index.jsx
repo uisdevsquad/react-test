@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import Debugmate from 'debugmate';
-const debugmate = new Debugmate();
+import { useDebugmate } from '../../providers/DebugmateProvider';
+import { environment, user } from '../../utils/debugmateContext';
 
 const StateMutationError = () => {
     const [state, setState] = useState({ name: 'Initial' });
+    const debugmate = useDebugmate();
 
     useEffect(() => {
         try {
@@ -12,7 +13,7 @@ const StateMutationError = () => {
 
             throw new Error('State was mutated directly!');
         } catch (error) {
-           debugmate.publish(error);
+           debugmate.publish(error, user, environment);
         }
     }, [state]);
 

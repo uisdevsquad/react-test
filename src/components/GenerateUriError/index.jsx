@@ -1,12 +1,14 @@
-import Debugmate from 'debugmate';
+import { useDebugmate } from '../../providers/DebugmateProvider';
+import { environment, user } from '../../utils/debugmateContext';
 
-const debugmate = new Debugmate();
 
 function GenerateUriError() {
+    const debugmate = useDebugmate();
+
     try {
         decodeURIComponent('%');
     } catch (error) {
-       debugmate.publish(error);
+       debugmate.publish(error, user, environment);
     }
 }
 

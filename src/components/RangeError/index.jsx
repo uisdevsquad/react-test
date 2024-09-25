@@ -1,16 +1,15 @@
-import Debugmate from "debugmate";
 import { useEffect } from "react";
-
-const debugmate = new Debugmate();
+import { useDebugmate } from "../../providers/DebugmateProvider";
+import { environment, user } from "../../utils/debugmateContext";
 
 function RangeError() {
+    const debugmate = useDebugmate();
+
     useEffect(() => {
         try {
-            // Exemplo de RangeError: Criação de um array com tamanho negativo
             const arr = new Array(-1);
         } catch (e) {
-            console.error('RangeError capturado:', e);
-            debugmate.publish(e)
+            debugmate.publish(e, user, environment)
         }
     }, []);
 
