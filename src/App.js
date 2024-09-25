@@ -16,11 +16,11 @@ const App = () => {
     { route: '/click-event-error', name: 'Click Event Error' },
     { route: '/life-cycle-error', name: 'Lifecycle Error' },
     { route: '/range-error', name: 'RangeError' },
-    { route: '/unhandled-rejection-error', name: 'Unhandled Rejection Error - not working' },
+    { route: '/unhandled-rejection-error', name: 'Unhandled Rejection Error' },
   ];
 
   return (
-    <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 relative min-h-screen flex flex-col items-center justify-center">
+    <div className="bg-gray-50 text-black/50 relative min-h-screen flex flex-col items-center justify-center">
       <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
         <header className="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
           <div className="flex lg:justify-center lg:col-start-2">
@@ -34,7 +34,7 @@ const App = () => {
               <Link
                 key={index}
                 to={link.route}
-                className="inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-200  hover:bg-gray-300"
               >
                 <span className="w-full">{link.name}</span>
                 <svg
@@ -57,7 +57,7 @@ const App = () => {
           </div>
         </main>
 
-        <footer className="py-16 text-center text-sm text-black dark:text-white/70 space-y-4">
+        <footer className="py-16 text-center text-sm text-black space-y-4">
           <p>DebugMate Domain: {process.env.REACT_APP_DEBUGMATE_DOMAIN} | Token: {process.env.REACT_APP_DEBUGMATE_TOKEN}</p>
         </footer>
       </div>
